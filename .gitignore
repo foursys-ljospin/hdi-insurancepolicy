@@ -1,0 +1,5 @@
+target
+.idea
+com.hdi.crm.iml
+*.zip
+.swagger-codegen
