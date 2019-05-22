@@ -84,19 +84,19 @@ public class InsurancepolicyApiController implements InsurancepolicyApi {
         return new ResponseEntity<List<InteractionLog>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<List<InsurancePdf>> getInsuranePolicyInvoce(@ApiParam(value = "Company ID", required = true) @RequestHeader(value = "X-Company-Id", required = true) String xCompanyId, @ApiParam(value = "Application ID", required = true) @RequestHeader(value = "X-Application-Id", required = true) String xApplicationId, @ApiParam(value = "User ID", required = true) @RequestHeader(value = "X-User-Id", required = true) String xUserId, @ApiParam(value = "ID da Apólice de Seguro", required = true) @PathVariable("idInsurancePolicy") Integer idInsurancePolicy, @ApiParam(value = "Number of part invoce") @Valid @RequestParam(value = "InvoicePart", required = false) Integer invoicePart) {
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                return new ResponseEntity<List<InsurancePdf>>(objectMapper.readValue("[ {  \"pdf\" : {    \"binary\" : \"binary\"  }}, {  \"pdf\" : {    \"binary\" : \"binary\"  }} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<List<InsurancePdf>>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        }
-
-        return new ResponseEntity<List<InsurancePdf>>(HttpStatus.NOT_IMPLEMENTED);
-    }
+//    public ResponseEntity<List<InsurancePdf>> getInsuranePolicyInvoce(@ApiParam(value = "Company ID", required = true) @RequestHeader(value = "X-Company-Id", required = true) String xCompanyId, @ApiParam(value = "Application ID", required = true) @RequestHeader(value = "X-Application-Id", required = true) String xApplicationId, @ApiParam(value = "User ID", required = true) @RequestHeader(value = "X-User-Id", required = true) String xUserId, @ApiParam(value = "ID da Apólice de Seguro", required = true) @PathVariable("idInsurancePolicy") Integer idInsurancePolicy, @ApiParam(value = "Number of part invoce") @Valid @RequestParam(value = "InvoicePart", required = false) Integer invoicePart) {
+//        String accept = request.getHeader("Accept");
+//        if (accept != null && accept.contains("application/json")) {
+//            try {
+//                return new ResponseEntity<List<InsurancePdf>>(objectMapper.readValue("[ {  \"pdf\" : {    \"binary\" : \"binary\"  }}, {  \"pdf\" : {    \"binary\" : \"binary\"  }} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
+//            } catch (IOException e) {
+//                log.error("Couldn't serialize response for content type application/json", e);
+//                return new ResponseEntity<List<InsurancePdf>>(HttpStatus.INTERNAL_SERVER_ERROR);
+//            }
+//        }
+//
+//        return new ResponseEntity<List<InsurancePdf>>(HttpStatus.NOT_IMPLEMENTED);
+//    }
 
 //    public ResponseEntity<Void> getInsuranePolicyInvoceEmail(@ApiParam(value = "Company ID", required = true) @RequestHeader(value = "X-Company-Id", required = true) String xCompanyId, @ApiParam(value = "Application ID", required = true) @RequestHeader(value = "X-Application-Id", required = true) String xApplicationId, @ApiParam(value = "User ID", required = true) @RequestHeader(value = "X-User-Id", required = true) String xUserId, @ApiParam(value = "ID da Apólice de Seguro", required = true) @PathVariable("idInsurancePolicy") Long idInsurancePolicy) {
 //        String accept = request.getHeader("Accept");

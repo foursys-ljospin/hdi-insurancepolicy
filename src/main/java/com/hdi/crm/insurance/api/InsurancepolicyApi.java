@@ -51,18 +51,18 @@ public interface InsurancepolicyApi {
     ResponseEntity<List<InteractionLog>> getInteractionLog(@ApiParam(value = "Company ID" ,required=true) @RequestHeader(value="X-Company-Id", required=true) String xCompanyId,@ApiParam(value = "Application ID" ,required=true) @RequestHeader(value="X-Application-Id", required=true) String xApplicationId,@ApiParam(value = "User ID" ,required=true) @RequestHeader(value="X-User-Id", required=true) String xUserId,@ApiParam(value = "ID da Apólice de Seguro",required=true) @PathVariable("idInsurancePolicy") Long idInsurancePolicy,@Min(0)@ApiParam(value = "Number of start record.") @Valid @RequestParam(value = "skip", required = false) Integer skip,@Min(1) @Max(100) @ApiParam(value = "Quantity of records", defaultValue = "20") @Valid @RequestParam(value = "limit", required = false, defaultValue="20") Integer limit,@ApiParam(value = "Fields list to return data") @Valid @RequestParam(value = "fieldsFilter", required = false) String fieldsFilter);
 
 
-    @ApiOperation(value = "Invoice to InsurancePolicy", nickname = "getInsuranePolicyInvoce", notes = "get the invoice of insurancepolicy", response = InsurancePdf.class, responseContainer = "List", tags={ "insurancepolicy", })
-    @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "Successful Operation", response = InsurancePdf.class, responseContainer = "List"),
-        @ApiResponse(code = 401, message = "Unauthorized", response = ApiErrorResponse.class),
-        @ApiResponse(code = 403, message = "Forbidden", response = ApiErrorResponse.class),
-        @ApiResponse(code = 404, message = "Data not found", response = ApiErrorResponse.class),
-        @ApiResponse(code = 405, message = "Data input not supplied or invalid", response = ApiErrorResponse.class),
-        @ApiResponse(code = 406, message = "Exception", response = ApiErrorResponse.class) })
-    @RequestMapping(value = "/insurancepolicy/{idInsurancePolicy}/payment-pdf",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<List<InsurancePdf>> getInsuranePolicyInvoce(@ApiParam(value = "Company ID" ,required=true) @RequestHeader(value="X-Company-Id", required=true) String xCompanyId, @ApiParam(value = "Application ID" ,required=true) @RequestHeader(value="X-Application-Id", required=true) String xApplicationId, @ApiParam(value = "User ID" ,required=true) @RequestHeader(value="X-User-Id", required=true) String xUserId, @ApiParam(value = "ID da Apólice de Seguro",required=true) @PathVariable("idInsurancePolicy") Integer idInsurancePolicy, @ApiParam(value = "Number of part invoce") @Valid @RequestParam(value = "InvoicePart", required = false) Integer invoicePart);
+//    @ApiOperation(value = "Invoice to InsurancePolicy", nickname = "getInsuranePolicyInvoce", notes = "get the invoice of insurancepolicy", response = InsurancePdf.class, responseContainer = "List", tags={ "insurancepolicy", })
+//    @ApiResponses(value = {
+//        @ApiResponse(code = 200, message = "Successful Operation", response = InsurancePdf.class, responseContainer = "List"),
+//        @ApiResponse(code = 401, message = "Unauthorized", response = ApiErrorResponse.class),
+//        @ApiResponse(code = 403, message = "Forbidden", response = ApiErrorResponse.class),
+//        @ApiResponse(code = 404, message = "Data not found", response = ApiErrorResponse.class),
+//        @ApiResponse(code = 405, message = "Data input not supplied or invalid", response = ApiErrorResponse.class),
+//        @ApiResponse(code = 406, message = "Exception", response = ApiErrorResponse.class) })
+//    @RequestMapping(value = "/insurancepolicy/{idInsurancePolicy}/payment-pdf",
+//        produces = { "application/json" },
+//        method = RequestMethod.GET)
+//    ResponseEntity<List<InsurancePdf>> getInsuranePolicyInvoce(@ApiParam(value = "Company ID" ,required=true) @RequestHeader(value="X-Company-Id", required=true) String xCompanyId, @ApiParam(value = "Application ID" ,required=true) @RequestHeader(value="X-Application-Id", required=true) String xApplicationId, @ApiParam(value = "User ID" ,required=true) @RequestHeader(value="X-User-Id", required=true) String xUserId, @ApiParam(value = "ID da Apólice de Seguro",required=true) @PathVariable("idInsurancePolicy") Integer idInsurancePolicy, @ApiParam(value = "Number of part invoce") @Valid @RequestParam(value = "InvoicePart", required = false) Integer invoicePart);
 
 
 //    @ApiOperation(value = "Invoice to InsurancePolicy", nickname = "getInsuranePolicyInvoceEmail", notes = "Send by email the invoice of insurancepolicy", tags={ "insurancepolicy", })
