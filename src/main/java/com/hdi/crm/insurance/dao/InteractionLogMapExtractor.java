@@ -2,6 +2,7 @@ package com.hdi.crm.insurance.dao;
 
 import com.hdi.crm.insurance.api.dto.DomainData;
 import com.hdi.crm.insurance.api.dto.InteractionLog;
+import com.hdi.crm.insurance.api.dto.ResponseDto;
 import org.springframework.jdbc.core.ResultSetExtractor;
 
 import java.sql.Date;
@@ -15,11 +16,11 @@ import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InteractionLogMapExtractor implements ResultSetExtractor<List<InteractionLog>> {
+public class InteractionLogMapExtractor implements ResultSetExtractor<List<ResponseDto>> {
 
     @Override
-    public List<InteractionLog> extractData(ResultSet resultSet) throws SQLException {
-        List<InteractionLog> interations = new ArrayList<>();
+    public List<ResponseDto> extractData(ResultSet resultSet) throws SQLException {
+        List<ResponseDto> interations = new ArrayList<>();
         while (resultSet.next()) {
             InteractionLog interation = new InteractionLog();
             interation.setCreationDateTime(convertDateTime(resultSet.getDate("Data"), resultSet.getTime("Hora")));

@@ -5,18 +5,17 @@
  */
 package com.hdi.crm.insurance.api;
 
-import com.hdi.crm.insurance.api.dto.*;
+import com.hdi.crm.insurance.api.dto.ApiErrorResponse;
+import com.hdi.crm.insurance.api.dto.InsurancePolicyPayments;
+import com.hdi.crm.insurance.api.dto.InteractionLog;
+import com.hdi.crm.insurance.api.dto.ResponseDto;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.util.List;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-05-20T20:43:56.051Z")
 
@@ -34,7 +33,7 @@ public interface InsurancepolicyApi {
     @RequestMapping(value = "/insurancepolicy/{idInsurancePolicy}/installments",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<InsurancePolicyPayments>> getPayments(@ApiParam(value = "Company ID" ,required=true) @RequestHeader(value="X-Company-Id", required=true) String xCompanyId,@ApiParam(value = "Application ID" ,required=true) @RequestHeader(value="X-Application-Id", required=true) String xApplicationId,@ApiParam(value = "User ID" ,required=true) @RequestHeader(value="X-User-Id", required=true) String xUserId,@ApiParam(value = "ID da Apólice de Seguro",required=true) @PathVariable("idInsurancePolicy") Long idInsurancePolicy,@Min(0)@ApiParam(value = "Number of start record.") @Valid @RequestParam(value = "skip", required = false) Integer skip,@Min(1) @Max(100) @ApiParam(value = "Quantity of records", defaultValue = "20") @Valid @RequestParam(value = "limit", required = false, defaultValue="20") Integer limit,@ApiParam(value = "Fields list to return data") @Valid @RequestParam(value = "fieldsFilter", required = false) String fieldsFilter);
+    ResponseEntity<List<ResponseDto>> getPayments(@ApiParam(value = "Company ID" ,required=true) @RequestHeader(value="X-Company-Id", required=true) String xCompanyId, @ApiParam(value = "Application ID" ,required=true) @RequestHeader(value="X-Application-Id", required=true) String xApplicationId, @ApiParam(value = "User ID" ,required=true) @RequestHeader(value="X-User-Id", required=true) String xUserId, @ApiParam(value = "ID da Apólice de Seguro",required=true) @PathVariable("idInsurancePolicy") Long idInsurancePolicy, @Min(0)@ApiParam(value = "Number of start record.") @Valid @RequestParam(value = "skip", required = false) Integer skip, @Min(1) @Max(100) @ApiParam(value = "Quantity of records", defaultValue = "20") @Valid @RequestParam(value = "limit", required = false, defaultValue="20") Integer limit, @ApiParam(value = "Fields list to return data") @Valid @RequestParam(value = "fieldsFilter", required = false) String fieldsFilter);
 
 
     @ApiOperation(value = "Registro de Interação (Agenda)", nickname = "getInteractionLog", notes = "Consulta de Registro de Interação (Agenda)", response = InteractionLog.class, responseContainer = "List", tags={ "insurancepolicy", })
@@ -48,7 +47,7 @@ public interface InsurancepolicyApi {
     @RequestMapping(value = "/insurancepolicy/{idInsurancePolicy}/interactionlog",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<InteractionLog>> getInteractionLog(@ApiParam(value = "Company ID" ,required=true) @RequestHeader(value="X-Company-Id", required=true) String xCompanyId,@ApiParam(value = "Application ID" ,required=true) @RequestHeader(value="X-Application-Id", required=true) String xApplicationId,@ApiParam(value = "User ID" ,required=true) @RequestHeader(value="X-User-Id", required=true) String xUserId,@ApiParam(value = "ID da Apólice de Seguro",required=true) @PathVariable("idInsurancePolicy") Long idInsurancePolicy,@Min(0)@ApiParam(value = "Number of start record.") @Valid @RequestParam(value = "skip", required = false) Integer skip,@Min(1) @Max(100) @ApiParam(value = "Quantity of records", defaultValue = "20") @Valid @RequestParam(value = "limit", required = false, defaultValue="20") Integer limit,@ApiParam(value = "Fields list to return data") @Valid @RequestParam(value = "fieldsFilter", required = false) String fieldsFilter);
+    ResponseEntity<List<ResponseDto>> getInteractionLog(@ApiParam(value = "Company ID" ,required=true) @RequestHeader(value="X-Company-Id", required=true) String xCompanyId,@ApiParam(value = "Application ID" ,required=true) @RequestHeader(value="X-Application-Id", required=true) String xApplicationId,@ApiParam(value = "User ID" ,required=true) @RequestHeader(value="X-User-Id", required=true) String xUserId,@ApiParam(value = "ID da Apólice de Seguro",required=true) @PathVariable("idInsurancePolicy") Long idInsurancePolicy,@Min(0)@ApiParam(value = "Number of start record.") @Valid @RequestParam(value = "skip", required = false) Integer skip,@Min(1) @Max(100) @ApiParam(value = "Quantity of records", defaultValue = "20") @Valid @RequestParam(value = "limit", required = false, defaultValue="20") Integer limit,@ApiParam(value = "Fields list to return data") @Valid @RequestParam(value = "fieldsFilter", required = false) String fieldsFilter);
 
 
 //    @ApiOperation(value = "Invoice to InsurancePolicy", nickname = "getInsuranePolicyInvoce", notes = "get the invoice of insurancepolicy", response = InsurancePdf.class, responseContainer = "List", tags={ "insurancepolicy", })

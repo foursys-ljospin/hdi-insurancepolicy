@@ -1,6 +1,7 @@
 package com.hdi.crm.insurance.dao;
 
 import com.hdi.crm.insurance.api.dto.InteractionLog;
+import com.hdi.crm.insurance.api.dto.ResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -8,13 +9,13 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class InteractionLogDao implements Dao<InteractionLog>{
+public class InteractionLogDao implements Dao<ResponseDto> {
 
     @Autowired
     JdbcTemplate jdbcTemplate;
 
 
-    public List<InteractionLog> get(Long idInsurancePolicy, String xCompanyId, String xApplicationId, String xUserId) {
+    public List<ResponseDto> get(Long idInsurancePolicy, String xCompanyId, String xApplicationId, String xUserId) {
         String query = getQuery();
         return jdbcTemplate.query(query, new Object[]{idInsurancePolicy, xCompanyId, xApplicationId, xUserId}, new InteractionLogMapExtractor());
     }

@@ -17,7 +17,7 @@ import java.util.Objects;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-05-20T20:43:56.051Z")
 
-public class ApiErrorResponse {
+public class ApiErrorResponse implements ResponseDto{
     @JsonProperty("code")
     private Integer code = null;
 

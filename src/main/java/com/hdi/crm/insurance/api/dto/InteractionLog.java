@@ -16,7 +16,7 @@ import java.util.Objects;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2019-05-20T20:43:56.051Z")
 
-public class InteractionLog {
+public class InteractionLog implements ResponseDto{
     @JsonProperty("creationDateTime")
     private OffsetDateTime creationDateTime = null;
 

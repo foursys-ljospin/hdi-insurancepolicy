@@ -2,6 +2,7 @@ package com.hdi.crm.insurance.dao;
 
 import com.hdi.crm.insurance.api.dto.InsurancePolicyPayments;
 import com.hdi.crm.insurance.api.dto.PaymentType;
+import com.hdi.crm.insurance.api.dto.ResponseDto;
 import com.hdi.crm.insurance.api.dto.Status;
 import com.hdi.crm.insurance.util.PaymentTypeEnum;
 import com.hdi.crm.insurance.util.StatusEnum;
@@ -13,11 +14,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InsurancePaymentsMapExtractor implements ResultSetExtractor<List<InsurancePolicyPayments>> {
+public class InsurancePaymentsMapExtractor implements ResultSetExtractor<List<ResponseDto>> {
 
     @Override
-    public List<InsurancePolicyPayments> extractData(ResultSet resultSet) throws SQLException {
-        List<InsurancePolicyPayments> payments = new ArrayList<>();
+    public List<ResponseDto> extractData(ResultSet resultSet) throws SQLException {
+        List<ResponseDto> payments = new ArrayList<>();
         while (resultSet.next()) {
             InsurancePolicyPayments payment = new InsurancePolicyPayments();
             payment.setAmount(resultSet.getFloat("VL_Recxeber"));
@@ -37,8 +38,8 @@ public class InsurancePaymentsMapExtractor implements ResultSetExtractor<List<In
 
     private PaymentType convertPayment(String resultPaymentType) {
 
-        PaymentTypeEnum paymentTypeEnum =PaymentTypeEnum.getByDescription(resultPaymentType);
-        if(paymentTypeEnum == null)
+        PaymentTypeEnum paymentTypeEnum = PaymentTypeEnum.getByDescription(resultPaymentType);
+        if (paymentTypeEnum == null)
             return null;
         PaymentType paymentType = new PaymentType();
         paymentType.setId(new BigDecimal(paymentTypeEnum.getId()));
@@ -50,7 +51,7 @@ public class InsurancePaymentsMapExtractor implements ResultSetExtractor<List<In
     private Status convertStatus(String resultStatus) {
         StatusEnum statusEnum = StatusEnum.getByDescription(resultStatus);
 
-        if(statusEnum == null)
+        if (statusEnum == null)
             return null;
 
         Status status = new Status();

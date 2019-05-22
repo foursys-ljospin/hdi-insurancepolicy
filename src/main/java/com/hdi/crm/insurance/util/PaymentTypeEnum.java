@@ -16,16 +16,9 @@ public enum PaymentTypeEnum {
         this.id = id;
         this.description = description;
     }
-    public String getDescription() {
-        return description;
-    }
-
-    public Integer getId() {
-        return this.id;
-    }
 
     public static PaymentTypeEnum getByDescription(String text) {
-        if(text != null) {
+        if (text != null) {
             for (PaymentTypeEnum payment : PaymentTypeEnum.values()) {
                 if (payment.getDescription().equals(text)) {
                     return payment;
@@ -33,5 +26,13 @@ public enum PaymentTypeEnum {
             }
         }
         return null;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Integer getId() {
+        return this.id;
     }
 }
