@@ -3,3 +3,4 @@ target
 com.hdi.crm.iml
 *.zip
 .swagger-codegen
+*.log

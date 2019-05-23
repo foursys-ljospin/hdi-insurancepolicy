@@ -30,6 +30,9 @@ public class InsurancePaymentsMapExtractor implements ResultSetExtractor<List<Re
             payment.setPaymentDate(resultSet.getDate("DT_Pago").toLocalDate());
             payment.setDueDate(resultSet.getDate("VL_Recxeber").toLocalDate());
 
+            // Dúvida se esse dado que está vindo está correto
+            // payment.setCreationDate(resultSet.getDate("DT_Pago").toLocalDate());
+
             payments.add(payment);
 
         }

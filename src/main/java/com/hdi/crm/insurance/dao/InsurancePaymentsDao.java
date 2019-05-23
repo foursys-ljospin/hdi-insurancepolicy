@@ -17,7 +17,7 @@ public class InsurancePaymentsDao implements Dao<ResponseDto> {
 
     public List<ResponseDto> get(Long idInsurancePolicy, String xCompanyId, String xApplicationId, String xUserId) {
         String query = getQuery();
-        return jdbcTemplate.query(query, new Object[]{idInsurancePolicy, xCompanyId, xApplicationId, xUserId}, new InsurancePaymentsMapExtractor());
+        return jdbcTemplate.query(query, new Object[]{xUserId, xCompanyId, xApplicationId, idInsurancePolicy}, new InsurancePaymentsMapExtractor());
     }
 
     public String getQuery() {
@@ -46,10 +46,11 @@ public class InsurancePaymentsDao implements Dao<ResponseDto> {
                 .append("from fin.pub.rbregper a")
                 .append("left join bas.pub.tipmoeda b on b.tipmoeda = a.\"tip-moeorig\"")
                 .append("where a.\"stt-premio\" = '1'")
-                .append("and a.\"cod-empresa\" = ?")
-                .append("and a.\"cod-sucursal\" = ?")
-                .append("and a.\"cod-carteira\" = ?")
-                .append("and a.\"seq-apolice\" = ?");
+                .append("and a.\"cod-empresa\" = ?") // Número da apólice 02 primeiros registros
+                .append("and a.\"cod-sucursal\" = ?") // Número da apólice 03 registros seguintes
+                .append("and a.\"cod-carteira\" = ?") // Número da apólice 03 registros seguintes
+                .append("and a.\"seq-apolice\" = ?"); //Últimos registros
+                // Código da apólice 01.001.628.000008
         return query.toString();
     }
 }

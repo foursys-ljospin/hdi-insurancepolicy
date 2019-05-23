@@ -27,5 +27,6 @@
     <orderEntry type="library" name="Maven: io.springfox:springfox-core:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-spi:2.7.0" level="project" />
     <orderEntry type="library" name="Maven: io.springfox:springfox-spring-web:2.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.hdi.drive-owner.progress:progress:1.0.0" level="project" />
   </component>
 </module>

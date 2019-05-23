@@ -27,6 +27,9 @@ public class InteractionLogMapExtractor implements ResultSetExtractor<List<Respo
             interation.setDescription(resultSet.getString("Descricao"));
             interation.setProtocolCode(resultSet.getString("Protocolo"));
             interation.setReason(convertDomainData(resultSet.getString("Cod_Motivo"), resultSet.getString("Des_Motivo")));
+            interation.setClassification(convertDomainData("", "")); // Qual o Parâmetro correto
+            // Add Usuário
+            // Add flag Interna
             interations.add(interation);
         }
         return interations;

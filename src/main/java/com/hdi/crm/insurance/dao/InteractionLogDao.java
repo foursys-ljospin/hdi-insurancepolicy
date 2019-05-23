@@ -17,7 +17,7 @@ public class InteractionLogDao implements Dao<ResponseDto> {
 
     public List<ResponseDto> get(Long idInsurancePolicy, String xCompanyId, String xApplicationId, String xUserId) {
         String query = getQuery();
-        return jdbcTemplate.query(query, new Object[]{idInsurancePolicy, xCompanyId, xApplicationId, xUserId}, new InteractionLogMapExtractor());
+        return jdbcTemplate.query(query, new Object[]{idInsurancePolicy}, new InteractionLogMapExtractor());
     }
 
     @Override
@@ -36,7 +36,7 @@ public class InteractionLogDao implements Dao<ResponseDto> {
                 .append("from pub.islogsin a")
                 .append("inner join bas.pub.ismotlogsin b on b.\"cod-motivo\" = a.\"cod-motivo\"")
                 .append("where b.\"cod-motivo\" <> '0'")
-                .append("and a.\"seq-siniuss\" = '010683151416127'")
+                .append("and a.\"seq-siniuss\" = ?") // Código do
                 .append("order by a.\"dat-movimentacao\"  desc");
         return query.toString();
     }
